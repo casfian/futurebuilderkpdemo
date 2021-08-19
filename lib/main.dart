@@ -62,13 +62,16 @@ class _HomeState extends State<Home> {
         title: Text('Material App Bar'),
       ),
       body: FutureBuilder(
-        future: getPosts(),
+        future: getPosts(), //ambil data dari function getPost yg memulangkan data Post
         builder: (context, AsyncSnapshot snapshot) {
+          //builder akan buat 
           return ListView.builder(
+            //kalau data sifar maka kosong, kalau tak paparkan data seterusnya
               itemCount: snapshot.data == null
                   ? 0
                   : snapshot.data.length, //asal dia tiada data
               itemBuilder: (context, index) {
+                //paparkan data
                 return ListTile(
                   leading: Image.network(snapshot.data[index]['thumbnailUrl']),
                   title: Text(snapshot.data[index]['title']),
