@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http; 
+//kita jadikan sebagai object supaya mudah guna
  
 void main() => runApp(MyApp());
  
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
 
 //secondary class
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
