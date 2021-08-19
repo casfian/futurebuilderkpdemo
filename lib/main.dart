@@ -64,7 +64,9 @@ class _HomeState extends State<Home> {
       body: FutureBuilder(
         future: getPosts(), //ambil data dari function getPost yg memulangkan data Post
         builder: (context, AsyncSnapshot snapshot) {
-          //builder akan buat 
+          if (snapshot.connectionState == ConnectionState.done) {
+            //papar data
+            //builder akan buat 
           return ListView.builder(
             //kalau data sifar maka kosong, kalau tak paparkan data seterusnya
               itemCount: snapshot.data == null
@@ -78,6 +80,11 @@ class _HomeState extends State<Home> {
                   subtitle: Text(snapshot.data[index]['url']),
                 );
               });
+          } else {
+            //data tengah loading
+            return Center(child: CircularProgressIndicator()   );
+          }
+          
         },
       ),
     );
