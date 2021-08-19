@@ -18,16 +18,18 @@ class MyApp extends StatelessWidget {
 }
 
 //secondary class
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   List posts = [];
 
-  //kita akan guna data dari URL ne
-  //data source
   var url = Uri.parse('https://jsonplaceholder.typicode.com/photos');
 
-  //buat function
   Future getPosts() async {
     var data = await http.get(url);
     var jsonData = json.decode(data.body); //data akan diterjemah ke JSON
